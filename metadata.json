@@ -1,0 +1,5 @@
+{
+  "name": "Fandom Wiki Exporter",
+  "description": "An application that takes any wiki on Fandom and turns its contents into a single, downloadable Markdown document.",
+  "requestFramePermissions": []
+}
