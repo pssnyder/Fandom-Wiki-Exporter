@@ -9,6 +9,7 @@ import { BookOpenIcon } from './components/icons/BookOpenIcon';
 
 // Declare TurndownService for TypeScript since it's loaded from a CDN
 declare var TurndownService: any;
+declare var turndownPluginGfm: any; // For GFM (tables, etc.)
 
 export default function App() {
   const [wikiUrl, setWikiUrl] = useState<string>('https://startupcompany.fandom.com/wiki/Startup_Company_Wiki');
@@ -33,6 +34,12 @@ export default function App() {
           headingStyle: 'atx',
           codeBlockStyle: 'fenced'
         });
+        // Use the GFM plugin to handle tables and other GFM features
+        if (typeof turndownPluginGfm !== 'undefined') {
+          turndownServiceRef.current.use(turndownPluginGfm.gfm);
+        } else {
+            console.warn("Turndown GFM plugin not loaded. Tables might not be formatted correctly.");
+        }
     }
 
     try {
